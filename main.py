@@ -57,7 +57,7 @@ class SimulatorGUI:
         # =====================================================================
         # PANEL DE CREACIÓN DE PROCESOS
         # =====================================================================
-        self.frame_create = tk.LabelFrame(self.root, text="1. Creación de Procesos (Con Prioridad)", padx=10, pady=10)
+        self.frame_create = tk.LabelFrame(self.root, text="1. Creación de Procesos", padx=10, pady=10)
         self.frame_create.pack(fill=tk.X, padx=10, pady=5)
         
         tk.Label(self.frame_create, text="Nombre:").grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
@@ -165,7 +165,7 @@ class SimulatorGUI:
                 messagebox.showwarning("Rechazado", "No hay memoria RAM suficiente.")
             self.update_ui()
         except ValueError:
-            messagebox.showerror("Error", "Ingrese valores numéricos válidos en Burst, RAM y Prioridad.")
+            messagebox.showerror("Error", "Ingrese valores numéricos válidos en Burst y RAM.")
 
     def on_execute_tick(self):
         self.scheduler.execute_cycle()

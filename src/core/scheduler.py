@@ -74,7 +74,7 @@ class Scheduler:
 
         self.logger.log(
             f"ADMITIDO: PID {pcb.pid} ({pcb.name}) -> READY | "
-            f"Burst={pcb.cpu_burst} | RAM={pcb.mem_mb}MB | Pri={pcb.priority}",
+            f"Burst={pcb.cpu_burst} | RAM={pcb.mem_mb}MB",
             self.clock,
         )
         return True
@@ -96,7 +96,7 @@ class Scheduler:
         return self.ready_queue.popleft()
 
     # === Ejecución de un tick ===
-    def _execute_quantum(self, pcb: PCB) -> None:
+    def _execute_tick(self, pcb: PCB) -> None:
         """Simula UN tick de reloj: decrementa time_remaining."""
         pcb.time_remaining -= 1
         self.logger.log(
@@ -138,7 +138,7 @@ class Scheduler:
 
         # Paso 2: Ejecutar tick
         assert self.current_process is not None
-        self._execute_quantum(self.current_process)
+        self._execute_tick(self.current_process)
 
         # Paso 3: ¿Terminó?
         if self.current_process.time_remaining <= 0:

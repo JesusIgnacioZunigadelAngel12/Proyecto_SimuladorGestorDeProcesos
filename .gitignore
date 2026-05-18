@@ -1,24 +1,19 @@
-# Entornos virtuales
-venv/
-env/
-.env
-.venv/
-
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyo
+*.egg-info/
+dist/
+build/
 
-# IDEs
+# Entornos virtuales
+venv/
+.env/
+
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
 
 # Sistema operativo
 .DS_Store
 Thumbs.db
-
-# Logs y bases de datos
-*.log
-*.sqlite3

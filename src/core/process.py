@@ -4,6 +4,7 @@ Módulo: process.py — Bloque de Control de Proceso (PCB)
 Define la estructura de datos que representa un proceso en el SO,
 incluyendo sus estados, atributos y validación de transiciones.
 """
+from __future__ import annotations
 
 import random
 from enum import Enum, auto

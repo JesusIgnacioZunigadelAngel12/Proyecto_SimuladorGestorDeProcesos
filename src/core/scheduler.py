@@ -5,6 +5,7 @@ Simula un planificador que decide la ejecución de procesos (FCFS, SJF)
 en un modelo determinista por ticks, con soporte para llegadas dinámicas
 y ráfagas de I/O estocásticas (Modo Batch).
 """
+from __future__ import annotations
 
 import random
 from collections import deque
@@ -115,14 +116,13 @@ class Scheduler:
             return None
 
         # Despachador principal según algoritmo configurado
-        match self.algorithm:
-            case SchedulingAlgorithm.FCFS:
-                return self.ready_queue.popleft()
-            case SchedulingAlgorithm.SJF:
-                # Encuentra el trabajo más corto (SJF no apropiativo)
-                shortest = min(self.ready_queue, key=lambda p: p.time_remaining)
-                self.ready_queue.remove(shortest)
-                return shortest
+        if self.algorithm == SchedulingAlgorithm.FCFS:
+            return self.ready_queue.popleft()
+        elif self.algorithm == SchedulingAlgorithm.SJF:
+            # Encuentra el trabajo más corto (SJF no apropiativo)
+            shortest = min(self.ready_queue, key=lambda p: p.time_remaining)
+            self.ready_queue.remove(shortest)
+            return shortest
 
         return self.ready_queue.popleft()
 
